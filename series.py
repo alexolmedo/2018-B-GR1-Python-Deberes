@@ -15,7 +15,9 @@ def main_menu():
           "1. Agregar serie\n"
           "2. Mostrar series\n"
           "3. Actualizar serie\n"
-          "4. Borrar serie:")
+          "4. Borrar serie\n"
+          "x. Salir\n"
+          )
     opcion= input("Opcion seleccionada >> ")
     exec_menu(opcion)
     return
@@ -35,55 +37,77 @@ def exec_menu(opcion):
     return
 
 
-# Menu 1
+# Agregar Serie
 def agregar():
     nuevaSerie = input("Ingrese la serie que desea agregar: ")
     series.append(nuevaSerie)
     print("Serie agregada exitosamente!\n")
     opcion = input("1. Agregar otra serie\n"
-                   "9. Regresar\n"
-                   "0. Salir\n"
+                   "r. Regresar\n"
+                   "x. Salir\n"
                    ">>  ")
     exec_menu(opcion)
     return
 
 
-# Menu 2
+# Mostrar series
 def mostrar():
-    print(series)
-    opcion = input("9. Regresar\n"
-                   "0. Salir\n"
+    imprimirSeries()
+    opcion = input("\nr. Regresar\n"
+                   "x. Salir\n"
                    ">>  ")
     exec_menu(opcion)
-    # print "Hello Menu 2 !\n"
-    # print "9. Back"
-    # print "0. Quit"
-    # choice = raw_input(" >>  ")
-    # exec_menu(choice)
     return
 
+# Actualizar serie
+def actualizar():
+    imprimirSeries()
+    opcion = input("\nr. Regresar\n"
+                   "x. Salir\n"
+                   ">>  ")
+    exec_menu(opcion)
+    return
 
-# Back to main menu
+# Borrar serie
+def borrar():
+    imprimirSeries()
+    indiceSerieBorrada = input("Seleccione la serie que desea borrar: ")
+    series.pop(int(indiceSerieBorrada)-1)
+    os.system('cls')
+    print("Serie borrada exitosamente!")
+    imprimirSeries()
+    opcion = input("\nb. Borrar otra serie\n"
+                   "r. Regresar\n"
+                   "x. Salir\n"
+                   ">>  ")
+    exec_menu(opcion)
+    return
+
+def imprimirSeries():
+    indice = 1
+    for item in series:
+        print(str(indice) + ". " + item)
+        indice += 1
+
+# Volver al menu principal
 def back():
     acciones_menu['main_menu']()
 
 
-# Exit program
+# Salir del programa
 def exit():
     sys.exit()
 
-
-# =======================
-#    MENUS DEFINITIONS
-# =======================
-
-# Menu definition
+# Definiciones del menu
 acciones_menu = {
     'main_menu': main_menu,
     '1': agregar,
     '2': mostrar,
-    '9': back,
-    '0': exit,
+    'b': borrar,
+    '3': actualizar,
+    '4': borrar,
+    'r': back,
+    'x': exit,
 }
 
 # =======================
