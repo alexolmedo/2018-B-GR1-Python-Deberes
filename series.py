@@ -14,7 +14,7 @@ def main_menu():
           "Elija una opcion para comenzar:\n"
           "1. Agregar serie\n"
           "2. Mostrar series\n"
-          "3. Actualizar serie\n"
+          "3. Editar serie\n"
           "4. Borrar serie\n"
           "x. Salir\n"
           )
@@ -60,9 +60,16 @@ def mostrar():
     return
 
 # Actualizar serie
-def actualizar():
+def editar():
     imprimirSeries()
-    opcion = input("\nr. Regresar\n"
+    indiceSerieEditada = input("Seleccione la serie que desea editar: ")
+    serieEditada = input("Ingrese la serie editada:")
+    series[int(indiceSerieEditada)-1] = serieEditada
+    os.system('cls')
+    print("Serie editada exitosamente!")
+    imprimirSeries()
+    opcion = input("\ne. Editar otra serie\n"
+                   "r. Regresar\n"
                    "x. Salir\n"
                    ">>  ")
     exec_menu(opcion)
@@ -103,8 +110,9 @@ acciones_menu = {
     'main_menu': main_menu,
     '1': agregar,
     '2': mostrar,
+    'e': editar,
+    '3': editar,
     'b': borrar,
-    '3': actualizar,
     '4': borrar,
     'r': back,
     'x': exit,
