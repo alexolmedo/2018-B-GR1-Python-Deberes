@@ -118,11 +118,6 @@ acciones_menu = {
     'x': exit,
 }
 
-# =======================
-#      MAIN PROGRAM
-# =======================
-
-# Main Program
+# Programa principal
 if __name__ == "__main__":
-    # Launch main menu
     main_menu()
